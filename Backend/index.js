@@ -6,7 +6,7 @@ import { handleClick } from './jobs/gameLogic.js';
 import User from './models/userModel.js';
 
 
-const server = http.createServer(app);
+
 const PORT = process.env.PORT;
 
 
@@ -29,6 +29,11 @@ app.post('/click', async (req, res) => {
     res.json({ counter, points, prizes, reward });
 });
 
+app.get('/test', (req, res) => {
+    res.json({ message: 'Hello from server!' });
+})
+
+
 app.get('/user/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
     if (!user) {
@@ -38,7 +43,7 @@ app.get('/user/:id', async (req, res) => {
 });
 
 
-server.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server is listening on PORT ${PORT}`);
-    dbToConnect();
+    await dbToConnect();
 })
