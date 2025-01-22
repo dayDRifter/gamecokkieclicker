@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 const App = () => {
   const [counter, setCounter] = useState(0);
@@ -25,9 +26,9 @@ const App = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div className="container">
       <h1>Cookie Clicker Clone</h1>
-      <button onClick={handleClick} style={{ padding: '10px 20px', fontSize: '16px' }}>
+      <button className="click-button" onClick={handleClick}>
         Click Me!
       </button>
       <p>Counter: {counter}</p>
