@@ -10,7 +10,7 @@ const App = () => {
 
   const handleClick = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/click')
+      const response = await axios.post('https://gamecokkieclicker.vercel.app')
       // console.log(response.userId);
 
       const { counter, points, prizes, reward } = response.data;
