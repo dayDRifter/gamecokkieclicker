@@ -5,6 +5,8 @@ import { dbToConnect } from "./db/db.connect.js";
 import { handleClick } from './jobs/gameLogic.js';
 import User from './models/userModel.js';
 
+app.use(express.json());
+app.use(cors());
 
 
 const PORT = process.env.PORT;
