@@ -9,7 +9,6 @@ import User from './models/userModel.js';
 const server = http.createServer(app);
 const PORT = process.env.PORT;
 
-//routes
 
 // Routes
 app.post('/click', async (req, res) => {
