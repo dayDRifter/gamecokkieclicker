@@ -13,21 +13,26 @@ const PORT = process.env.PORT;
 
 // Routes
 app.post('/click', async (req, res) => {
-    const { userId } = req.body;
+    try {
+        const { userId } = req.body;
 
-    let user = await User.findById(userId);
-    if (!user) {
-        user = new User({
-            counter: 0,
-            points: 0,
-            prizes: 0
-        });
-        await user.save();
+        let user = await User.findById(userId);
+        if (!user) {
+            user = new User({
+                counter: 0,
+                points: 0,
+                prizes: 0
+            });
+            await user.save();
+        }
+
+        const { counter, points, prizes, reward } = await handleClick(user);
+
+        res.json({ counter, points, prizes, reward });
+    } catch (error) {
+        console.error('Error in /click route:', error.message);
+        res.status(500).json({ error: error });
     }
-
-    const { counter, points, prizes, reward } = await handleClick(user);
-
-    res.json({ counter, points, prizes, reward });
 });
 
 app.get('/test', (req, res) => {
